@@ -38,10 +38,12 @@ int majorityO(vector<int> &v){
             cnt++;
         else
             cnt--;
+        cout << cnt << " ";
     }
     cnt = 0;
     for(auto it : v) if (it == el)
             cnt++;
+    cout << endl;
     return cnt >= (int)v.size() / 2 ? el : -1;
 }
 
