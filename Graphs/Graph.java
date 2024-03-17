@@ -89,6 +89,14 @@ public class Graph {
         return traversal;
     }
 
+    public int getVertecies() {
+        return this.vertex;
+    }
+
+    public int getEdges() {
+        return this.edges;
+    }
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int vertex = scan.nextInt();
