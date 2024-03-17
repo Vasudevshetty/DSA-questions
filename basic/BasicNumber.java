@@ -1,5 +1,3 @@
-package Day1;
-
 /*Implemented very basic way to extract elemetns from the given number, and count the number of digits in a number. */
 
 public class BasicNumber {

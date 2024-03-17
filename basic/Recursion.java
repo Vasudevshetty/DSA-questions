@@ -1,4 +1,3 @@
-package Day1;
 
 class Recursion {
     // function to print the no from 1 to n.
