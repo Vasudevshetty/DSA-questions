@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Graph {
     private ArrayList<ArrayList<Integer>> graphList;
@@ -44,6 +45,29 @@ public class Graph {
         return traversal;
     }
 
+    public ArrayList<Integer> DFSI(int startingVertex) {
+        ArrayList<Integer> traversal = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+
+        boolean visited[] = new boolean[vertex + 1];
+
+        stack.push(startingVertex);
+        visited[startingVertex] = true;
+
+        while (!stack.isEmpty()) {
+            int vertex = stack.pop();
+            traversal.add(vertex);
+            for (int node : graphList.get(vertex).reversed()) {
+                if (!visited[node]) {
+                    stack.push(node);
+                    visited[node] = true;
+                }
+            }
+        }
+
+        return traversal;
+    }
+
     private void DFSR(final Graph graph, boolean visited[], ArrayList<Integer> traversal, int startingVertex) {
         if (!visited[startingVertex]) {
             visited[startingVertex] = true;
@@ -79,10 +103,8 @@ public class Graph {
             graph.graphList.get(v).add(u);
         }
         int startingVertex = scan.nextInt();
-        System.out.println(graph.BFS());
-        System.out.println(graph.DFS());
-        System.out.println(graph.BFS(startingVertex));
         System.out.println(graph.DFS(startingVertex));
+        System.out.println(graph.DFSI(startingVertex));
         scan.close();
     }
 }
