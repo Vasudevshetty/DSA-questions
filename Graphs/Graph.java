@@ -31,16 +31,37 @@ public class Graph {
         visited[startingVertex] = true;
 
         while (!queue.isEmpty()) {
-            ArrayList<Integer> list = queue.poll();
+            ArrayList<Integer> neighbours = queue.poll();
 
-            for (Integer node : list) {
-                if (!visited[node]) {
-                    visited[node] = true;
-                    traversal.add(node);
-                    queue.add(graphList.get(node));
+            for (Integer neighbour : neighbours) {
+                if (!visited[neighbour]) {
+                    visited[neighbour] = true;
+                    traversal.add(neighbour);
+                    queue.add(graphList.get(neighbour));
                 }
             }
         }
+        return traversal;
+    }
+
+    private void DFSR(final Graph graph, boolean visited[], ArrayList<Integer> traversal, int startingVertex) {
+        if (!visited[startingVertex]) {
+            visited[startingVertex] = true;
+            traversal.add(startingVertex);
+            for (Integer node : graph.graphList.get(startingVertex))
+                DFSR(graph, visited, traversal, node);
+        }
+    }
+
+    public ArrayList<Integer> DFS() {
+        return DFS(1);
+    }
+
+    public ArrayList<Integer> DFS(int startingVertex) {
+        boolean visited[] = new boolean[vertex + 1];
+        ArrayList<Integer> traversal = new ArrayList<>();
+
+        DFSR(this, visited, traversal, startingVertex);
         return traversal;
     }
 
@@ -58,8 +79,10 @@ public class Graph {
             graph.graphList.get(v).add(u);
         }
         int startingVertex = scan.nextInt();
-        ArrayList<Integer> traversal = graph.BFS(startingVertex);
-        System.out.println(traversal);
+        System.out.println(graph.BFS());
+        System.out.println(graph.DFS());
+        System.out.println(graph.BFS(startingVertex));
+        System.out.println(graph.DFS(startingVertex));
         scan.close();
     }
 }
