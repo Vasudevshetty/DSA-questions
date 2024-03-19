@@ -8,6 +8,7 @@ import java.util.Stack;
 
 public class Graph {
     private ArrayList<ArrayList<Integer>> graphList;
+    private int[][] graphMat;
     private int vertex, edges;
 
     public Graph(int vertex, int edges) {
@@ -16,6 +17,7 @@ public class Graph {
         graphList = new ArrayList<ArrayList<Integer>>();
         for (int i = 0; i <= vertex; i++)
             graphList.add(new ArrayList<>());
+        graphMat = new int[vertex + 1][edges + 1];
     }
 
     public ArrayList<Integer> BFS() {

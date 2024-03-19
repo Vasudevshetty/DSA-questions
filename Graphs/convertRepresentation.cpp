@@ -1,5 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+vector<vector<int>> matToList(const vector<vector<int>> &mat)
+{
+    vector<vector<int>> list(mat.size());
+
+    for (size_t i = 1; i < mat.size(); i++)
+    {
+        for (size_t j = 1; j < mat[i].size(); j++)
+        {
+            if (mat[i][j] != 0)
+                list[i].push_back(j);
+        }
+    }
+    return list;
+}
+
 vector<vector<int>> inputMat(int vertex, int edges){
     vector<vector<int>> mat(vertex + 1, vector<int>(edges + 1, 0));
     for (size_t i = 1; i < mat.size(); i++)
@@ -45,5 +61,6 @@ int main()
 {
     int vertex, edges;
     cin >> vertex >> edges;
+    displayList(matToList(inputMat(vertex, edges)));
     return 0;
 }
