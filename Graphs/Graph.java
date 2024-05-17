@@ -8,6 +8,7 @@ import java.util.Stack;
 
 public class Graph {
     private ArrayList<ArrayList<Integer>> graphList;
+    @SuppressWarnings("unused")
     private int[][] graphMat;
     private int vertex, edges;
 
@@ -62,9 +63,11 @@ public class Graph {
             for (int node : graphList.get(vertex).reversed()) {
                 if (!visited[node]) {
                     stack.push(node);
+                    System.out.println("st" + stack);
                     visited[node] = true;
                 }
             }
+            System.out.println("op" + traversal);
         }
 
         return traversal;
@@ -113,8 +116,8 @@ public class Graph {
             graph.graphList.get(v).add(u);
         }
         int startingVertex = scan.nextInt();
-        System.out.println(graph.DFS(startingVertex));
         System.out.println(graph.DFSI(startingVertex));
+        System.out.println(graph.BFS(startingVertex));
         scan.close();
     }
 }
