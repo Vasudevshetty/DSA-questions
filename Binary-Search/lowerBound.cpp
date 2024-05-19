@@ -31,13 +31,13 @@ int upperBound(vector<int> &arr, int target)
     {
         int mid = low + (high - low) / 2;
 
-        if (arr[mid] <= target)
+        if (arr[mid] > target)
         {
             ans = mid;
-            low = mid + 1;
+            high = mid - 1;
         }
         else
-            high = mid - 1;
+            low = mid + 1;
     }
 
     return ans;
